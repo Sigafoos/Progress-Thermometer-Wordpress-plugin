@@ -16,8 +16,16 @@ function include_thermometer_css() {
 add_action('wp_head', 'include_thermometer_css');
 
 function get_thermometer() {
-?>
-<div id="thermometer">Hello</div>
-<?php
+
+$values = array("Zoning variance","Close on building","Submit TTB application","Receive TTB license","Submit SLA application","Receive SLA license","Beer!");
+
+echo "<div id=\"thermometer\">\r\n";
+echo "<ul>\r\n";
+foreach ($values as $value) {
+	echo "<li style=\"width:" . (1/count($values)*100) . "%\">" . $value . "</li>\r\n";
+}
+echo "</ul>\r\n";
+echo "</div>\r\n";
+
 }
 ?>
