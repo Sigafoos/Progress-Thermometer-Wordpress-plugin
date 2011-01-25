@@ -12,24 +12,17 @@
 }
 
 #thermometer ul li div {
-	/*margin-left: -10px;*/
 	height: 23px;
 	border: 1px solid #111;
 	border-right: 2px solid #111;
 	border-left: none;
-	z-index: -1;
 	background: #fffee2;
 	background: -webkit-gradient(linear, 0 0, 0 100%, from(#fffee2), to(#bbbaa0));
+	-webkit-border-radius: -20px;
 }
 
 #thermometer ul li.completed div {
-	margin-left: 0;
 	background: -webkit-gradient(linear, 0 0, 0 100%, from(#c00), to(#900));
-}
-
-#thermometer ul li.last div {
-	z-index: 1;
-	padding-right: 15px;
 }
 
 #thermometer ul li:first-child div {
