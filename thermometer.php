@@ -53,15 +53,16 @@ function get_thermometer() {
 	$values = array("Zoning variance","Close on building","Submit TTB application","Receive TTB license","Submit SLA application","Receive SLA license","Beer!");
 
 	echo "<div id=\"thermometer\">\r\n";
-	echo "<ul>\r\n";
+	echo "<ol>\r\n";
 	foreach ($values as $id=>$value) {
 		echo "<li style=\"width:" . (1/count($values)*100) . "%\"";
 		if ($id == $current) echo " class=\"last completed\"";
 		else if ($id < $current) echo " class=\"completed\"";
-		echo ">\r\n<div>&nbsp;</div>\r\n";
-		echo $value . "</li>\r\n";
+		echo ">\r\n<span>&nbsp;</span>\r\n";
+		echo ($id == $current) ? "<strong>" . $value . "</strong>" : $value;
+		echo "</li>\r\n";
 	}
-	echo "</ul>\r\n";
+	echo "</ol>\r\n";
 	echo "</div>\r\n";
 }
 ?>

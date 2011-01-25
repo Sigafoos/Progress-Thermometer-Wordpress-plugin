@@ -3,15 +3,16 @@
 	height: 1em;
 }
 
-#thermometer ul li {
-/*	display: inline;*/
+#thermometer li {
 	list-style-type: none;
 	float: left;
 	text-align: center;
 	font-size: .8em;
 }
 
-#thermometer ul li div {
+#thermometer li span {
+	/* So if css is disabled there's no line break */
+	display: block;
 	height: 23px;
 	border: 1px solid #111;
 	border-right: 2px solid #111;
@@ -21,18 +22,23 @@
 	-webkit-border-radius: -20px;
 }
 
-#thermometer ul li.completed div {
+#thermometer li.completed span {
 	background: -webkit-gradient(linear, 0 0, 0 100%, from(#c00), to(#900));
 }
 
-#thermometer ul li:first-child div {
+#thermometer li:first-child span {
 	border-left: 1px solid #111;
 	-webkit-border-radius: 20px 0 0 20px;
 	-moz-border-radius: 20px 0 0 20px;
 }
 
-#thermometer ul li:last-child div, #thermometer ul li.last div {
+#thermometer li:last-child span, #thermometer li.last span {
 	border-right: 1px solid #111;
 	-webkit-border-radius: 0 20px 20px 0;
 	-moz-border-radius: 0 20px 20px 0;
+}
+
+/* To display bold if css is disabled */
+#thermometer li strong {
+	font-weight: normal;
 }
