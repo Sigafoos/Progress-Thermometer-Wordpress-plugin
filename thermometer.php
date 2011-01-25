@@ -16,16 +16,21 @@ function include_thermometer_css() {
 add_action('wp_head', 'include_thermometer_css');
 
 function get_thermometer() {
+	$current = 2;
 
-$values = array("Zoning variance","Close on building","Submit TTB application","Receive TTB license","Submit SLA application","Receive SLA license","Beer!");
+	$values = array("Zoning variance","Close on building","Submit TTB application","Receive TTB license","Submit SLA application","Receive SLA license","Beer!");
 
-echo "<div id=\"thermometer\">\r\n";
-echo "<ul>\r\n";
-foreach ($values as $value) {
-	echo "<li style=\"width:" . (1/count($values)*100) . "%\">" . $value . "</li>\r\n";
-}
-echo "</ul>\r\n";
-echo "</div>\r\n";
-
+	echo "<div id=\"thermometer\">\r\n";
+	echo "<ul>\r\n";
+	foreach ($values as $id=>$value) {
+		echo "<li style=\"width:" . (1/count($values)*100) . "%\"";
+		if ($id == $current) echo " class=\"last completed\"";
+		else if ($id < $current) echo " class=\"completed\"";
+		echo ">\r\n<div>";
+		echo "&nbsp;</div>\r\n";
+		echo $value . "</li>\r\n";
+	}
+	echo "</ul>\r\n";
+	echo "</div>\r\n";
 }
 ?>

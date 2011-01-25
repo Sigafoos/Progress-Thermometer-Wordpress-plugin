@@ -1,10 +1,45 @@
 #thermometer {
 	width: 100%;
+	height: 1em;
 }
 
 #thermometer ul li {
 /*	display: inline;*/
 	list-style-type: none;
 	float: left;
-	background-color: red;
+	text-align: center;
+	font-size: .8em;
+}
+
+#thermometer ul li div {
+	/*margin-left: -10px;*/
+	height: 23px;
+	border: 1px solid #111;
+	border-right: 2px solid #111;
+	border-left: none;
+	z-index: -1;
+	background: #fffee2;
+	background: -webkit-gradient(linear, 0 0, 0 100%, from(#fffee2), to(#bbbaa0));
+}
+
+#thermometer ul li.completed div {
+	margin-left: 0;
+	background: -webkit-gradient(linear, 0 0, 0 100%, from(#c00), to(#900));
+}
+
+#thermometer ul li.last div {
+	z-index: 1;
+	padding-right: 15px;
+}
+
+#thermometer ul li:first-child div {
+	border-left: 1px solid #111;
+	-webkit-border-radius: 20px 0 0 20px;
+	-moz-border-radius: 20px 0 0 20px;
+}
+
+#thermometer ul li:last-child div, #thermometer ul li.last div {
+	border-right: 1px solid #111;
+	-webkit-border-radius: 0 20px 20px 0;
+	-moz-border-radius: 0 20px 20px 0;
 }
