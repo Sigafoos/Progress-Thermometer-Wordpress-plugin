@@ -65,4 +65,10 @@ function get_thermometer() {
 	echo "</ol>\r\n";
 	echo "</div>\r\n";
 }
+
+// make it a widget
+function register_thermometer() {
+	register_sidebar_widget("Progress Thermometer","get_thermometer");
+}
+add_action("plugins_loaded","register_thermometer");
 ?>
