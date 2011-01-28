@@ -47,6 +47,7 @@ function thermometer_menu_options() {
 <?php
 }
 
+/* sweater, shoes, shirt */
 function get_thermometer() {
 	$current = 2;
 
@@ -63,6 +64,7 @@ function get_thermometer() {
 		echo "</li>\r\n";
 	}
 	echo "</ol>\r\n";
+	echo "<span class=\"clear:both\">&nbsp;</span>\r\n";
 	echo "</div>\r\n";
 }
 
