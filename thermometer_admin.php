@@ -1,5 +1,11 @@
 <?php
 add_action('admin_menu', 'thermometer_menu');
+add_action('admin_init','thermometer_settings_init');
+
+function thermometer_settings_init() {
+	register_setting('progress_thermometer','milestones');
+//	register_setting('progress_thermometer','current');
+}
 
 function thermometer_menu() {
         add_options_page('Thermometer Config', 'Progress Thermometer', 'manage_options', 'thermometer_menu', 'thermometer_menu_options');
@@ -21,13 +27,14 @@ function thermometer_menu_options() {
 
 <form name="thermometer_form" method="post" action="">
 <?php settings_fields("progress_thermometer"); ?>
+<?php $options = get_option("progress_thermometer"); ?>
 <table class="form-table">
 <tr valign="top">
 <th scope="row">Add options (one per line)</th>
 <td><textarea name="options" id="options" rows="10" cols="50"></textarea></td>
 </tr>
 </table>
-
+<?php print_r($options); ?>
 <p class="submit">
 <input type="submit" name="submit" id="submit" class="button-primary" value="<?php esc_attr_e('Save Changes') ?>" />
 </p>
