@@ -15,62 +15,56 @@ function include_thermometer_css() {
 
 add_action('wp_head', 'include_thermometer_css');
 
-add_action('admin_menu', 'thermometer_menu');
-
-function thermometer_menu() {
-	add_options_page('Thermometer Config', 'Progress Thermometer', 'manage_options', 'thermometer_menu', 'thermometer_menu_options');
-}
-
-function thermometer_menu_options() {
-	if (!current_user_can('manage_options'))  {
-		wp_die( __('You do not have sufficient permissions to access this page.') );
-	}
-?>
-
-<div class="wrap">
-
-<h2>Thermometer Config</h2>
-
-	<?php if ($_POST['submit']) { ?>
-<div class="updated"><p><strong>Settings saved (not really).</strong></p></div>
-	<?php } ?>
-
-<form name="thermometer_form" method="post" action="">
-
-<p class="submit">
-<input type="submit" name="submit" id="submit" class="button-primary" value="<?php esc_attr_e('Save Changes') ?>" />
-</p>
-
-</form>
-
-</div>
-<?php
-}
-
-/* sweater, shoes, shirt */
-function get_thermometer() {
-	$current = 2;
-
-	$values = array("Zoning variance","Close on building","Submit TTB application","Receive TTB license","Submit SLA application","Receive SLA license","Beer!");
-
-	echo "<div id=\"thermometer\">\r\n";
-	echo "<ol>\r\n";
-	foreach ($values as $id=>$value) {
-		echo "<li style=\"width:" . (1/count($values)*100) . "%\"";
-		if ($id == $current) echo " class=\"last completed\"";
-		else if ($id < $current) echo " class=\"completed\"";
-		echo ">\r\n<span>&nbsp;</span>\r\n";
-		echo ($id == $current) ? "<strong>" . $value . "</strong>" : $value;
-		echo "</li>\r\n";
-	}
-	echo "</ol>\r\n";
-	echo "<span class=\"clear:both\">&nbsp;</span>\r\n";
-	echo "</div>\r\n";
-}
+// the admin panel stuff is found here
+require('thermometer_admin.php');
 
 // make it a widget
 function register_thermometer() {
-	register_sidebar_widget("Progress Thermometer","get_thermometer");
+	register_widget("Progress_Thermometer");
 }
-add_action("plugins_loaded","register_thermometer");
+
+add_action("widgets_init","register_thermometer");
+
+class Progress_Thermometer extends WP_Widget {
+
+	function Progress_Thermometer() {
+		$widget_ops = array('classname'=>'thermometer','description' => 'Displays a progress bar');
+		$control_ops = array( 'width' => 300, 'height' => 350, 'id_base' => 'progress-thermometer' );
+
+		$this->WP_Widget('progress-thermometer','Progress Thermometer',$widget_ops,$control_ops);
+	}
+
+	// sweater, shoes, shirt
+	function widget($args, $instance) {
+		extract($args);
+
+		$title = apply_filters('widget_title',$instance['title']);
+		$current = 2; //$instance['current'];
+
+		$values = array("Zoning variance","Close on building","Submit TTB application","Receive TTB license","Submit SLA application","Receive SLA license","Beer!");//explode("	",$instance['values']);
+
+		echo $before_widget;
+
+		echo "<div id=\"thermometer\">\r\n";
+		echo "<ol>\r\n";
+		foreach ($values as $id=>$value) {
+			echo "<li style=\"width:" . (1/count($values)*100) . "%\"";
+			if ($id == $current) echo " class=\"last completed\"";
+			else if ($id < $current) echo " class=\"completed\"";
+			echo ">\r\n<span>&nbsp;</span>\r\n";
+			echo ($id == $current) ? "<strong>" . $value . "</strong>" : $value;
+			echo "</li>\r\n";
+		}
+		echo "</ol>\r\n";
+		echo "<span class=\"clear:both\">&nbsp;</span>\r\n";
+		echo "</div>\r\n";
+
+		echo $after_widget;
+	}
+
+	// go elsewhere
+	function form($instance) {
+		echo "<p>To configure, use the settings panel.</p>\r\n";
+	}
+}
 ?>
