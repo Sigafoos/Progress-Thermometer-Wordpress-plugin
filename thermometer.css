@@ -19,11 +19,15 @@
 	border-left: none;
 	background: #fffee2;
 	background: -webkit-gradient(linear, 0 0, 0 100%, from(#fffee2), to(#bbbaa0));
+	background: -moz-linear-gradient(top, #fffee2, #bbbaa0);
 	-webkit-border-radius: -20px;
+	-moz-border-radius: -20px;
 }
 
 #thermometer li.completed span {
+	background: #c00;
 	background: -webkit-gradient(linear, 0 0, 0 100%, from(#c00), to(#900));
+	background: -moz-linear-gradient(top, #c00, #900);
 }
 
 #thermometer li:first-child span {
