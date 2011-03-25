@@ -41,7 +41,7 @@ class Progress_Thermometer extends WP_Widget {
 		$title = apply_filters('widget_title',$instance['title']);
 		$current = 2; //$instance['current'];
 
-		$values = array("Zoning variance","Close on building","Submit TTB application","Receive TTB license","Submit SLA application","Receive SLA license","Beer!");//explode("	",$instance['values']);
+		$values = array("Zoning variance","Close on building","Submit TTB application","Receive TTB license","Submit SLA application","Receive SLA license","Complete brewery buildout","Beer!");//explode("	",$instance['values']);
 
 		echo $before_widget;
 
