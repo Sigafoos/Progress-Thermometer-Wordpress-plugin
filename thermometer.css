@@ -3,6 +3,13 @@
 	width: 100%;
 }
 
+#thermometer ol {
+	width: 100%;
+	margin: 0;
+	padding: 0;
+	text-align: center;
+}
+
 #thermometer li {
 	list-style-type: none;
 	float: left;

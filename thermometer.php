@@ -56,9 +56,8 @@ class Progress_Thermometer extends WP_Widget {
 			echo "</li>\r\n";
 		}
 		echo "</ol>\r\n";
-		echo "<span class=\"clear:both\">&nbsp;</span>\r\n";
+		echo "<div class=\"clearfix\">&nbsp;</div>\r\n";
 		echo "</div>\r\n";
-
 		echo $after_widget;
 	}
 
