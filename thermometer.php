@@ -47,8 +47,10 @@ class Progress_Thermometer extends WP_Widget {
 
 		echo "<div id=\"thermometer\">\r\n";
 		echo "<ol>\r\n";
+		$width = round((1/count($values)*100),1);
+		if ($width*count($values) > 100) $width = $width - .1;
 		foreach ($values as $id=>$value) {
-			echo "<li style=\"width:" . (1/count($values)*100) . "%\"";
+			echo "<li style=\"width:" . $width . "%\"";
 			if ($id == $current) echo " class=\"last completed\"";
 			else if ($id < $current) echo " class=\"completed\"";
 			echo ">\r\n<span>&nbsp;</span>\r\n";
@@ -56,14 +58,18 @@ class Progress_Thermometer extends WP_Widget {
 			echo "</li>\r\n";
 		}
 		echo "</ol>\r\n";
-		echo "<div class=\"clearfix\">&nbsp;</div>\r\n";
+
+		// I admit I don't entirely know why this works.
+		// If there are 1-5 or 8 values it will look different than otherwise
+		if ($width*count($values) != 100) echo "<div style=\"width:" . (100-$width*count($values)) . "%\">&nbsp;</div>";
+		else echo "<div class=\"clearfix\">&nbsp;</div>\r\n";
 		echo "</div>\r\n";
 		echo $after_widget;
 	}
 
 	// go elsewhere
 	function form($instance) {
-		echo "<p>To configure, use the settings panel.</p>\r\n";
+		echo "<p>To configure, use the <a href=\"options-general.php?page=thermometer_menu\">settings panel</a>.</p>\r\n";
 	}
 }
 ?>
