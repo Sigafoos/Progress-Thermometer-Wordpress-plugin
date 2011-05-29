@@ -42,8 +42,8 @@ function thermometer_menu_options() {
 <td><select name="current" id="current">
 <?php 
 foreach (explode("\r",$options['steps']) as $id=>$step) {
-	echo "<option value=\"" . $id . "\"";
-	if ($id == $options['current']) echo " selected=\"selected\"";
+	echo "<option value=\"" . ($id-1) . "\"";
+	if (($id-1) == $options['current']) echo " selected=\"selected\"";
 	echo ">" . $step . "</option>\r\n";
 }
 ?>
