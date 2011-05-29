@@ -21,8 +21,12 @@ function thermometer_menu_options() {
 
 <h2>Thermometer Config</h2>
 
-        <?php if ($_POST['submit']) { ?>
-<div class="updated"><p><strong>Settings saved (not really).</strong></p></div>
+        <?php if ($_POST['submit']) { 
+		$options['steps'] = $_POST['steps'];
+		$options['current'] = (is_numeric($_POST['current'])) ? $_POST['current'] : "0";
+		update_option("progress_thermometer",$options);
+	?>
+<div class="updated"><p><strong>Settings saved!</strong></p></div>
         <?php } ?>
 
 <form name="thermometer_form" method="post" action="">
@@ -30,11 +34,22 @@ function thermometer_menu_options() {
 <?php $options = get_option("progress_thermometer"); ?>
 <table class="form-table">
 <tr valign="top">
-<th scope="row">Add options (one per line)</th>
-<td><textarea name="options" id="options" rows="10" cols="50"></textarea></td>
+<th scope="row">Add steps (one per line)</th>
+<td><textarea name="steps" id="steps" rows="10" cols="50"><?php echo $options['steps']; ?></textarea></td>
+</tr>
+<tr valign="top">
+<th scope="row">Current step</th>
+<td><select name="current" id="current">
+<?php 
+foreach (explode("\r",$options['steps']) as $id=>$step) {
+	echo "<option value=\"" . $id . "\"";
+	if ($id == $options['current']) echo " selected=\"selected\"";
+	echo ">" . $step . "</option>\r\n";
+}
+?>
+</td>
 </tr>
 </table>
-<?php print_r($options); ?>
 <p class="submit">
 <input type="submit" name="submit" id="submit" class="button-primary" value="<?php esc_attr_e('Save Changes') ?>" />
 </p>
