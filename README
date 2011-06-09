@@ -1,0 +1,8 @@
+Progress Thermometer plugin
+By Dan Conley
+dan.j.conley@gmail.com
+(I'll put a link to the info page on my blog here, once I have it. Chicken and egg, you see)
+Originally developed for Community Beer Works: http://www.communitybeerworks.com
+
+ISSUES
+v1.0.5.2.3: If 1/(the number of steps) doesn't round off to two digits (ie 1/8 = 12.5%) it floats oddly. I've "fixed" this by handling it slightly differently, but the spacing isn't the same. It works but not perfectly.
