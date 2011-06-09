@@ -4,7 +4,6 @@ add_action('admin_init','thermometer_settings_init');
 
 function thermometer_settings_init() {
 	register_setting('progress_thermometer','milestones');
-//	register_setting('progress_thermometer','current');
 }
 
 function thermometer_menu() {
@@ -25,10 +24,9 @@ function thermometer_menu_options() {
 		$options['steps'] = $_POST['steps'];
 		$options['current'] = (is_numeric($_POST['current'])) ? $_POST['current'] : "0";
 		update_option("progress_thermometer",$options);
-	?>
-<div class="updated"><p><strong>Settings saved!</strong></p></div>
-        <?php } ?>
-
+		echo "<div class=\"updated\"><p><strong>Settings saved!</strong></p></div>";
+        } 
+?>
 <form name="thermometer_form" method="post" action="">
 <?php settings_fields("progress_thermometer"); ?>
 <?php $options = get_option("progress_thermometer"); ?>
