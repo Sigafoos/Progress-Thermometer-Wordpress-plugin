@@ -1,9 +1,9 @@
 <?php
 /*
 Plugin Name: Progress Thermometer
-Plugin URI: http://blog.danconley.net
-Description: Displays a horizontal 'thermometer' with a task's progress
-Version: 0.23
+Plugin URI: http://blog.danconley.net/progress-thermometer-wordpress-plugin
+Description: Displays a horizontal "thermometer" with a task's progress
+Version: 1.0.5.2.3
 Author: Dan Conley
 Author URI: http://www.danconley.net
 License: Kopyleft
