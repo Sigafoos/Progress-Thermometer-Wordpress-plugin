@@ -44,6 +44,9 @@ foreach (explode("\r",$options['steps']) as $id=>$step) {
 	if (($id-1) == $options['current']) echo " selected=\"selected\"";
 	echo ">" . $step . "</option>\r\n";
 }
+echo "<option value=\"" . $id . "\"";
+if ($id == $options['current']) echo " selected=\"selected\"";
+echo ">Finished!</option>\r\n"; 
 ?>
 </td>
 </tr>

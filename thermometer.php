@@ -46,6 +46,7 @@ class Progress_Thermometer extends WP_Widget {
 		echo $before_widget;
 
 		echo "<div id=\"thermometer\">\r\n";
+if ($current == count($values)-1) echo "<img src=\"http://i143.photobucket.com/albums/r160/onehecant4get/gif/dancingbaby.gif\" style=\"position:absolute;left:400px; top:-5px\" />";
 		echo "<ol>\r\n";
 		$width = round((1/count($values)*100),1);
 		if ($width*count($values) > 100) $width = $width - .1;
