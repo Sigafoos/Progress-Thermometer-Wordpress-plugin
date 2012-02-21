@@ -10,7 +10,7 @@ License: Kopyleft
 */
 
 function include_thermometer_css() {
-	echo "<link rel=\"stylesheet\" type=\"text/css\" media=\"all\" href=\"" . WP_PLUGIN_URL . "/thermometer/thermometer.css\" />";
+	echo "<link rel=\"stylesheet\" type=\"text/css\" media=\"all\" href=\"" . plugins_url() . "/thermometer/thermometer.css\" />";
 }
 
 add_action('wp_head', 'include_thermometer_css');
