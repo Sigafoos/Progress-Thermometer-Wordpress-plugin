@@ -4,8 +4,13 @@ dan.j.conley@gmail.com
 http://blog.danconley.net/progress-thermometer-wordpress-plugin
 Originally developed for Community Beer Works: http://www.communitybeerworks.com
 
+UPDATES
+5/2/2012
+- You can now actually complete the thermometer! I guess I had kind of forgotten that.
+
+- You can enable a gif of the dancing baby when you complete it, if you want. The code is commented out and I'd prefer if you didn't use our bandwidth for it, but it's there because I like dumb things.
+
 ISSUES
-v1.0.5.2.3
 - If 1/(the number of steps) doesn't round off to two digits (ie 1/8 = 12.5%) it floats oddly. I've "fixed" this by handling it slightly differently, but the spacing isn't the same. It works but not perfectly.
 
 - Newlines will be treated as a blank step.
